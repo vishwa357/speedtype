@@ -52,9 +52,7 @@ void TypingEngine::Reset() {
 bool TypingEngine::IsLineComplete() const {
     if (results.empty()) return false;
     for (const auto& r : results) {
-        if (r.state != CharState::Correct) {
-            return false;
-        }
+        if (r.state == CharState::Untyped) return false;
     }
     return true;
 }

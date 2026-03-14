@@ -60,7 +60,10 @@ void Renderer::DrawTypingLine(
         DrawTextCodepoint(font, codepoint, pos, static_cast<float>(fontSize), color);
 
         GlyphInfo info = GetGlyphInfo(font, codepoint);
-        pos.x += static_cast<float>(info.advanceX) * scale;
+        float advance = (info.advanceX > 0)
+            ? static_cast<float>(info.advanceX) * scale
+            : static_cast<float>(info.image.width) * scale;
+        pos.x += advance;
     }
 
     if (cursorPos >= 0 && cursorPos <= static_cast<int>(results.size())) {
@@ -83,8 +86,11 @@ void Renderer::DrawLesson(
     const std::string& tip
 ) {
     int fontSize = FONT_SIZE;
-    Vector2 origin = { static_cast<float>(ScreenWidth()) / 2.0f - 200.0f,
-                      static_cast<float>(ScreenHeight()) / 2.0f - static_cast<float>(fontSize) / 2.0f };
+    float lineWidth = MeasureTextEx(font, "I feel a funny feel.", fontSize, SPACING).x;
+    Vector2 origin = {
+        (ScreenWidth() - lineWidth) / 2.0f,
+        ScreenHeight() / 2.0f - fontSize / 2.0f
+    };
 
     DrawTypingLine(results, cursorPos, origin, fontSize);
 
@@ -107,7 +113,7 @@ void Renderer::DrawMainMenu(const std::vector<LessonData>& lessons, int selected
 void Renderer::DrawResults(float elapsedTime, int correctCount, int totalCount) {
     char buf[128];
     snprintf(buf, sizeof(buf), "Time: %.1fs  |  %d / %d correct", elapsedTime, correctCount, totalCount);
-    int w = MeasureTextEx(font, buf, static_cast<float>(FONT_SIZE), SPACING).x;
+    float w = MeasureTextEx(font, buf, static_cast<float>(FONT_SIZE), SPACING).x;
     DrawTextEx(font, buf, { (ScreenWidth() - w) / 2.0f, ScreenHeight() / 2.0f - FONT_SIZE / 2.0f },
               static_cast<float>(FONT_SIZE), SPACING, theme.textUntyped);
 }
