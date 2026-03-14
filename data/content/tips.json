@@ -1,0 +1,44 @@
+{
+  "tips": [
+    {
+      "id": "tip_001",
+      "content": "Keep your wrists straight and float above the keyboard",
+      "category": "posture"
+    },
+    {
+      "id": "tip_002",
+      "content": "Always return your fingers to the home row position (ASDF JKL;)",
+      "category": "technique"
+    },
+    {
+      "id": "tip_003",
+      "content": "Look at the screen, not your hands - trust your muscle memory",
+      "category": "technique"
+    },
+    {
+      "id": "tip_004",
+      "content": "Take a 5-minute break every 25 minutes to prevent strain",
+      "category": "health"
+    },
+    {
+      "id": "tip_005",
+      "content": "Accuracy is more important than speed - speed will come naturally",
+      "category": "mindset"
+    },
+    {
+      "id": "tip_006",
+      "content": "Practice difficult combinations like 'th', 'sh', 'ch' separately",
+      "category": "practice"
+    },
+    {
+      "id": "tip_007",
+      "content": "Use all fingers - don't rely on just your index fingers",
+      "category": "technique"
+    },
+    {
+      "id": "tip_008",
+      "content": "Keep a steady rhythm rather than typing in bursts",
+      "category": "technique"
+    }
+  ]
+}

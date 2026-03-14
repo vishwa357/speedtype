@@ -1,0 +1,12 @@
+{
+  "sound_enabled": true,
+  "sound_volume": 0.7,
+  "music_enabled": true,
+  "music_volume": 0.5,
+  "keyboard_layout": "qwerty",
+  "theme": "dark",
+  "font_size": "medium",
+  "show_key_hints": true,
+  "auto_advance": true,
+  "difficulty_preference": "intermediate"
+}

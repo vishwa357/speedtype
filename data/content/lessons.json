@@ -1,0 +1,381 @@
+{
+  "difficulty_levels": [
+    {
+      "id": 1,
+      "name": "beginner",
+      "display_name": "Beginner",
+      "color": "#4CAF50",
+      "target_wpm": 20,
+      "min_accuracy": 80
+    },
+    {
+      "id": 2,
+      "name": "intermediate",
+      "display_name": "Intermediate",
+      "color": "#FF9800",
+      "target_wpm": 35,
+      "min_accuracy": 85
+    },
+    {
+      "id": 3,
+      "name": "advanced",
+      "display_name": "Advanced",
+      "color": "#F44336",
+      "target_wpm": 50,
+      "min_accuracy": 90
+    },
+    {
+      "id": 4,
+      "name": "expert",
+      "display_name": "Expert",
+      "color": "#9C27B0",
+      "target_wpm": 70,
+      "min_accuracy": 95
+    }
+  ],
+  "lessons": [
+    {
+      "id": "lesson_001",
+      "name": "Home Row Basics",
+      "description": "Learn the fundamental home row keys - ASDF for left hand, JKL; for right hand",
+      "difficulty": "beginner",
+      "category": "home_row",
+      "icon": "icons/home_row.png",
+      "unlock_requirement": null,
+      "content": [
+        {
+          "line": 1,
+          "text": "aaa sss ddd fff jjj kkk lll ;;;",
+          "focus_keys": ["a", "s", "d", "f", "j", "k", "l", ";"],
+          "tip": "Keep your fingers on the home row position"
+        },
+        {
+          "line": 2,
+          "text": "asdf asdf asdf jkl; jkl; jkl;",
+          "focus_keys": ["a", "s", "d", "f", "j", "k", "l", ";"],
+          "tip": "Practice the alternating pattern"
+        },
+        {
+          "line": 3,
+          "text": "fdsa fdsa fdsa ;lkj ;lkj ;lkj",
+          "focus_keys": ["a", "s", "d", "f", "j", "k", "l", ";"],
+          "tip": "Try going backwards too"
+        }
+      ],
+      "rewards": {
+        "xp": 100,
+        "achievement": "home_row_master"
+      }
+    },
+    {
+      "id": "lesson_002",
+      "name": "Home Row Words",
+      "description": "Practice common words using only home row keys",
+      "difficulty": "beginner",
+      "category": "home_row",
+      "icon": "icons/home_row_words.png",
+      "unlock_requirement": "lesson_001",
+      "content": [
+        {
+          "line": 1,
+          "text": "a as ask asks dad add add",
+          "focus_keys": ["a", "s", "d", "f", "j", "k", "l", ";"],
+          "tip": "These are all home row words"
+        },
+        {
+          "line": 2,
+          "text": "all fall falls lad lads jak",
+          "focus_keys": ["a", "s", "d", "f", "j", "k", "l", ";"],
+          "tip": "Notice how fingers don't leave home row"
+        },
+        {
+          "line": 3,
+          "text": "sad salad salads jak jak",
+          "focus_keys": ["a", "s", "d", "f", "j", "k", "l", ";"],
+          "tip": "Keep your wrists straight"
+        }
+      ],
+      "rewards": {
+        "xp": 150,
+        "achievement": "home_row_words"
+      }
+    },
+    {
+      "id": "lesson_003",
+      "name": "Top Row Introduction",
+      "description": "Learn the top row keys - QWERTYUIOP",
+      "difficulty": "beginner",
+      "category": "top_row",
+      "icon": "icons/top_row.png",
+      "unlock_requirement": "lesson_002",
+      "content": [
+        {
+          "line": 1,
+          "text": "qqq www eee rrr ttt yyy uuu iii ooo ppp",
+          "focus_keys": ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+          "tip": "Reach up from home row"
+        },
+        {
+          "line": 2,
+          "text": "qwert qwert qwert yuiop yuiop yuiop",
+          "focus_keys": ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+          "tip": "Practice the full top row"
+        },
+        {
+          "line": 3,
+          "text": "type writer quote power fruit",
+          "focus_keys": ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
+          "tip": "Real words using top row"
+        }
+      ],
+      "rewards": {
+        "xp": 150,
+        "achievement": "top_row_intro"
+      }
+    },
+    {
+      "id": "lesson_004",
+      "name": "Bottom Row Introduction",
+      "description": "Learn the bottom row keys - ZXCVBNM,./",
+      "difficulty": "beginner",
+      "category": "bottom_row",
+      "icon": "icons/bottom_row.png",
+      "unlock_requirement": "lesson_003",
+      "content": [
+        {
+          "line": 1,
+          "text": "zzz xxx ccc vvv bbb nnn mmm ,,, ... ///",
+          "focus_keys": ["z", "x", "c", "v", "b", "n", "m", ",", ".", "/"],
+          "tip": "Reach down from home row"
+        },
+        {
+          "line": 2,
+          "text": "zxcv zxcv zxcv bn, bn, bn, ./ ./ ./",
+          "focus_keys": ["z", "x", "c", "v", "b", "n", "m", ",", ".", "/"],
+          "tip": "Practice bottom row patterns"
+        },
+        {
+          "line": 3,
+          "text": "xbox zinc comb zone mix",
+          "focus_keys": ["z", "x", "c", "v", "b", "n", "m"],
+          "tip": "Words using bottom row"
+        }
+      ],
+      "rewards": {
+        "xp": 150,
+        "achievement": "bottom_row_intro"
+      }
+    },
+    {
+      "id": "lesson_005",
+      "name": "Numbers Introduction",
+      "description": "Learn the number row - 1234567890",
+      "difficulty": "intermediate",
+      "category": "numbers",
+      "icon": "icons/numbers.png",
+      "unlock_requirement": "lesson_004",
+      "content": [
+        {
+          "line": 1,
+          "text": "111 222 333 444 555 666 777 888 999 000",
+          "focus_keys": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+          "tip": "Reach up further for numbers"
+        },
+        {
+          "line": 2,
+          "text": "123 123 456 456 789 789 0 0",
+          "focus_keys": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+          "tip": "Practice number sequences"
+        },
+        {
+          "line": 3,
+          "text": "2024 1990 2023 1985 1776",
+          "focus_keys": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+          "tip": "Practice years and dates"
+        }
+      ],
+      "rewards": {
+        "xp": 200,
+        "achievement": "number_row"
+      }
+    },
+    {
+      "id": "lesson_006",
+      "name": "Symbols and Punctuation",
+      "description": "Master common symbols and punctuation marks",
+      "difficulty": "intermediate",
+      "category": "symbols",
+      "icon": "icons/symbols.png",
+      "unlock_requirement": "lesson_005",
+      "content": [
+        {
+          "line": 1,
+          "text": "!!! @@@ ### $$$ %%% ^^^ &&& *** ((( )))",
+          "focus_keys": ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")"],
+          "tip": "Shift + number for symbols"
+        },
+        {
+          "line": 2,
+          "text": "Hello, world! How are you today?",
+          "focus_keys": [",", ".", "!", "?"
+          ],
+          "tip": "Practice punctuation in sentences"
+        },
+        {
+          "line": 3,
+          "text": "user@example.com https://www.site.com",
+          "focus_keys": ["@", ".", "/", ":"],
+          "tip": "Common email and URL symbols"
+        }
+      ],
+      "rewards": {
+        "xp": 200,
+        "achievement": "symbol_master"
+      }
+    },
+    {
+      "id": "lesson_007",
+      "name": "Common English Words",
+      "description": "Practice the most frequently used English words",
+      "difficulty": "intermediate",
+      "category": "words",
+      "icon": "icons/words.png",
+      "unlock_requirement": "lesson_006",
+      "content": [
+        {
+          "line": 1,
+          "text": "the quick brown fox jumps over the lazy dog",
+          "focus_keys": ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
+          "tip": "This sentence uses every letter"
+        },
+        {
+          "line": 2,
+          "text": "pack my box with five dozen liquor jugs",
+          "focus_keys": ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
+          "tip": "Another pangram for practice"
+        },
+        {
+          "line": 3,
+          "text": "the five boxing wizards jump quickly",
+          "focus_keys": ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
+          "tip": "Keep a steady rhythm"
+        }
+      ],
+      "rewards": {
+        "xp": 250,
+        "achievement": "pangram_master"
+      }
+    },
+    {
+      "id": "lesson_008",
+      "name": "Python Basics",
+      "description": "Practice typing Python code",
+      "difficulty": "advanced",
+      "category": "code",
+      "icon": "icons/python.png",
+      "unlock_requirement": "lesson_007",
+      "content": [
+        {
+          "line": 1,
+          "text": "def hello_world():",
+          "focus_keys": ["d", "e", "f", "h", "l", "o", "r", "w"],
+          "tip": "Define a function"
+        },
+        {
+          "line": 2,
+          "text": "    print('Hello, World!')",
+          "focus_keys": ["p", "r", "i", "n", "t", "'", "H", "W"],
+          "tip": "Indent with spaces, not tabs"
+        },
+        {
+          "line": 3,
+          "text": "",
+          "focus_keys": [],
+          "tip": ""
+        },
+        {
+          "line": 4,
+          "text": "for i in range(10):",
+          "focus_keys": ["f", "o", "r", "i", "n", "a", "g", "e"],
+          "tip": "For loop syntax"
+        },
+        {
+          "line": 5,
+          "text": "    if i % 2 == 0:",
+          "focus_keys": ["i", "f", "%", "="],
+          "tip": "Check for even numbers"
+        }
+      ],
+      "rewards": {
+        "xp": 300,
+        "achievement": "python_typer"
+      }
+    },
+    {
+      "id": "lesson_009",
+      "name": "HTML/CSS Basics",
+      "description": "Practice typing web development code",
+      "difficulty": "advanced",
+      "category": "code",
+      "icon": "icons/html.png",
+      "unlock_requirement": "lesson_008",
+      "content": [
+        {
+          "line": 1,
+          "text": "<!DOCTYPE html>",
+          "focus_keys": ["<", ">", "!"],
+          "tip": "HTML5 doctype declaration"
+        },
+        {
+          "line": 2,
+          "text": "<html>",
+          "focus_keys": ["<", ">"],
+          "tip": "HTML opening tag"
+        },
+        {
+          "line": 3,
+          "text": "<head>",
+          "focus_keys": ["<", ">"],
+          "tip": "Head section"
+        },
+        {
+          "line": 4,
+          "text": "    <title>My Page</title>",
+          "focus_keys": ["<", ">", "/"],
+          "tip": "Page title with closing tag"
+        }
+      ],
+      "rewards": {
+        "xp": 300,
+        "achievement": "web_typer"
+      }
+    },
+    {
+      "id": "lesson_010",
+      "name": "Speed Builder",
+      "description": "Long-form text to build typing speed",
+      "difficulty": "expert",
+      "category": "speed",
+      "icon": "icons/speed.png",
+      "unlock_requirement": "lesson_009",
+      "content": [
+        {
+          "line": 1,
+          "text": "The quick brown fox jumps over the lazy dog near the bank of the river. The fox was quick and nimble, while the dog remained blissfully unaware of the commotion around him.",
+          "focus_keys": ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", ".", ","],
+          "tip": "Focus on rhythm, not speed"
+        },
+        {
+          "line": 2,
+          "text": "Typing is a skill that improves with practice. The more you type, the better you become. Consistency is key to developing muscle memory and increasing your words per minute.",
+          "focus_keys": ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " ", ".", ","],
+          "tip": "Take short breaks between lines"
+        }
+      ],
+      "rewards": {
+        "xp": 500,
+        "achievement": "speed_demon"
+      }
+    }
+  ]
+}

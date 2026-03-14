@@ -1,0 +1,19 @@
+{
+  "user_id": "",
+  "total_xp": 0,
+  "level": 1,
+  "lessons_completed": [],
+  "games_played": [],
+  "achievements_unlocked": [],
+  "statistics": {
+    "total_time_typed": 0,
+    "total_characters_typed": 0,
+    "average_wpm": 0,
+    "average_accuracy": 0,
+    "best_wpm": 0,
+    "best_accuracy": 0,
+    "total_mistakes": 0
+  },
+  "lesson_progress": {},
+  "game_high_scores": {}
+}

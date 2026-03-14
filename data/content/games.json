@@ -1,0 +1,169 @@
+{
+  "games": [
+    {
+      "id": "game_001",
+      "name": "Word Rainbow",
+      "description": "Words fall from the sky - type them before they hit the ground!",
+      "difficulty": "beginner",
+      "duration": 60,
+      "icon": "icons/game_rainbow.png",
+      "instructions": "Type the falling words correctly to score points. Miss too many and the game ends!",
+      "scoring": {
+        "correct_word": 10,
+        "streak_bonus": 5,
+        "perfect_round": 50
+      },
+      "content_pool": {
+        "beginner": ["cat", "dog", "sun", "run", "big", "red", "hat", "bed", "car", "box"],
+        "intermediate": ["python", "coding", "master", "typing", "linux", "ubuntu", "keyboard"],
+        "advanced": ["development", "programming", "keyboard", "challenge", "accuracy"],
+        "expert": ["sophisticated", "implementation", "revolutionary", "accomplishment"]
+      }
+    },
+    {
+      "id": "game_002",
+      "name": "Number Fall",
+      "description": "Numbers are falling - type them quickly to score points!",
+      "difficulty": "intermediate",
+      "duration": 90,
+      "icon": "icons/game_numbers.png",
+      "instructions": "Type the numbers before they reach the bottom. Accuracy matters!",
+      "scoring": {
+        "correct_number": 5,
+        "chain_bonus": 2,
+        "perfect_level": 25
+      },
+      "content_pool": {
+        "beginner": ["10", "23", "45", "67", "89", "12", "34", "56", "78", "90"],
+        "intermediate": ["123", "456", "789", "321", "654", "987", "135", "246"],
+        "advanced": ["1234", "5678", "9012", "3456", "7890", "2468", "1357"],
+        "expert": ["12345", "67890", "54321", "98765", "10293", "84756"]
+      }
+    },
+    {
+      "id": "game_003",
+      "name": "Code Sprint",
+      "description": "Race against time typing code snippets",
+      "difficulty": "advanced",
+      "duration": 120,
+      "icon": "icons/game_code.png",
+      "instructions": "Type the code exactly as shown. Watch out for special characters!",
+      "scoring": {
+        "correct_char": 1,
+        "line_complete": 10,
+        "no_errors_bonus": 50
+      },
+      "content_pool": {
+        "beginner": [
+          "print('hello')",
+          "x = 5 + 3",
+          "name = 'user'",
+          "if x > 0:"
+        ],
+        "intermediate": [
+          "def add(a, b): return a + b",
+          "for i in range(10): print(i)",
+          "if x > 0: print('positive')",
+          "while True: break"
+        ],
+        "advanced": [
+          "class Person: def __init__(self, name): self.name = name",
+          "with open('file.txt', 'r') as f: data = f.read()",
+          "try: result = x / y except: print('error')",
+          "import sys; print(sys.version)"
+        ],
+        "expert": [
+          "decorator = lambda f: lambda *a: f'wrapped {f(*a)}'",
+          "comprehension = [x**2 for x in range(10) if x % 2 == 0]",
+          "@property\ndef full_name(self): return f'{self.first} {self.last}'"
+        ]
+      }
+    },
+    {
+      "id": "game_004",
+      "name": "Typing Racer",
+      "description": "Type racing terms to make your car go faster!",
+      "difficulty": "intermediate",
+      "duration": 60,
+      "icon": "icons/game_racer.png",
+      "instructions": "Type the words correctly to accelerate. The faster you type, the faster you go!",
+      "scoring": {
+        "correct_word": 15,
+        "speed_bonus": 10,
+        "win_bonus": 100
+      },
+      "content_pool": {
+        "beginner": ["go", "fast", "race", "car", "speed", "drive", "turn", "stop"],
+        "intermediate": ["accelerate", "brake", "engine", "driver", "pit stop", "finish line"],
+        "advanced": ["turbocharged", "aerodynamics", "horsepower", "transmission", "downforce"],
+        "expert": ["velocity", "acceleration", "torque converter", "suspension", "differential"]
+      }
+    },
+    {
+      "id": "game_005",
+      "name": "Quote Master",
+      "description": "Type famous quotes as quickly and accurately as possible",
+      "difficulty": "advanced",
+      "duration": 180,
+      "icon": "icons/game_quotes.png",
+      "instructions": "Type the famous quotes exactly. Punctuation counts!",
+      "scoring": {
+        "correct_char": 1,
+        "quote_complete": 50,
+        "perfect_quote": 100
+      },
+      "content_pool": {
+        "beginner": [
+          "Be yourself.",
+          "Stay positive.",
+          "Keep going.",
+          "Dream big."
+        ],
+        "intermediate": [
+          "To be or not to be.",
+          "I think therefore I am.",
+          "Knowledge is power.",
+          "Carpe diem."
+        ],
+        "advanced": [
+          "The only thing we have to fear is fear itself.",
+          "Ask not what your country can do for you.",
+          "I have a dream that one day this nation will rise up.",
+          "The journey of a thousand miles begins with a single step."
+        ],
+        "expert": [
+          "It was the best of times, it was the worst of times.",
+          "All happy families are alike; each unhappy family is unhappy in its own way.",
+          "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife."
+        ]
+      }
+    },
+    {
+      "id": "game_006",
+      "name": "Keyboard Marathon",
+      "description": "Long-form typing challenge with mixed content",
+      "difficulty": "expert",
+      "duration": 300,
+      "icon": "icons/game_marathon.png",
+      "instructions": "Test your endurance with this marathon typing session. Mixed content keeps it interesting!",
+      "scoring": {
+        "correct_char": 1,
+        "streak_50": 25,
+        "streak_100": 100,
+        "marathon_complete": 500
+      },
+      "content_pool": {
+        "mixed": [
+          "The quick brown fox jumps over the lazy dog.",
+          "1234567890",
+          "def fibonacci(n): return n if n <= 1 else fibonacci(n-1) + fibonacci(n-2)",
+          "To be, or not to be, that is the question.",
+          "sudo apt-get install python3",
+          "Hello, world! How are you today?",
+          "!@#$%^&*()_+",
+          "The only limit to our realization of tomorrow is our doubts of today."
+        ]
+      }
+    }
+  ]
+}

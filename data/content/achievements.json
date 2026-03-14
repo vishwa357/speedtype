@@ -1,0 +1,100 @@
+{
+  "achievements": [
+    {
+      "id": "home_row_master",
+      "name": "Home Row Hero",
+      "description": "Complete all home row lessons",
+      "icon": "achievements/home_row.png",
+      "xp_reward": 100,
+      "hidden": false
+    },
+    {
+      "id": "top_row_master",
+      "name": "Top Row Titan",
+      "description": "Complete all top row lessons",
+      "icon": "achievements/top_row.png",
+      "xp_reward": 100,
+      "hidden": false
+    },
+    {
+      "id": "bottom_row_master",
+      "name": "Bottom Row Boss",
+      "description": "Complete all bottom row lessons",
+      "icon": "achievements/bottom_row.png",
+      "xp_reward": 100,
+      "hidden": false
+    },
+    {
+      "id": "number_row",
+      "name": "Number Ninja",
+      "description": "Complete all number lessons",
+      "icon": "achievements/numbers.png",
+      "xp_reward": 150,
+      "hidden": false
+    },
+    {
+      "id": "symbol_master",
+      "name": "Symbol Specialist",
+      "description": "Complete all symbol lessons",
+      "icon": "achievements/symbols.png",
+      "xp_reward": 150,
+      "hidden": false
+    },
+    {
+      "id": "pangram_master",
+      "name": "Pangram Pro",
+      "description": "Type all pangram sentences perfectly",
+      "icon": "achievements/pangram.png",
+      "xp_reward": 200,
+      "hidden": false
+    },
+    {
+      "id": "python_typer",
+      "name": "Python Programmer",
+      "description": "Complete all Python code lessons",
+      "icon": "achievements/python.png",
+      "xp_reward": 250,
+      "hidden": false
+    },
+    {
+      "id": "web_typer",
+      "name": "Web Developer",
+      "description": "Complete all HTML/CSS lessons",
+      "icon": "achievements/web.png",
+      "xp_reward": 250,
+      "hidden": false
+    },
+    {
+      "id": "speed_demon",
+      "name": "Speed Demon",
+      "description": "Achieve 60+ WPM in any speed lesson",
+      "icon": "achievements/speed.png",
+      "xp_reward": 300,
+      "hidden": false
+    },
+    {
+      "id": "game_champion",
+      "name": "Game Champion",
+      "description": "Win all typing games",
+      "icon": "achievements/champion.png",
+      "xp_reward": 500,
+      "hidden": true
+    },
+    {
+      "id": "perfect_accuracy",
+      "name": "Perfectionist",
+      "description": "Complete a lesson with 100% accuracy",
+      "icon": "achievements/perfect.png",
+      "xp_reward": 200,
+      "hidden": false
+    },
+    {
+      "id": "marathon_finisher",
+      "name": "Marathon Runner",
+      "description": "Complete the Keyboard Marathon game",
+      "icon": "achievements/marathon.png",
+      "xp_reward": 400,
+      "hidden": false
+    }
+  ]
+}
