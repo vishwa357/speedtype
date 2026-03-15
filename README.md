@@ -14,6 +14,11 @@
 <proj-root>
 ├── CMakeLists.txt
 ├── .cursorrules
+├── engine          ← reusable across all games
+│   ├── World.hpp      ← EnTT registry wrapper
+│   ├── SceneLoader.hpp   ← JSON → entities/components
+│   ├── RenderSystem.hpp   ← draws entities with render components
+│   └── HotReload.hpp    ← dev-only file watcher
 ├── assets/
 │   ├── images/
 │   └── fonts/
@@ -23,7 +28,8 @@
 │   ├── main.cpp
 │   ├── Game.hpp / Game.cpp
 │   ├── Lesson.hpp / Lesson.cpp
-│   └── TypingEngine.hpp / TypingEngine.cpp
+│   ├── TypingEngine.hpp / TypingEngine.cpp   ← game-specific logic
+│   └── TypingSystem.hpp ← processes TypingEngine per entity
 └── external/
     ├── raylib/
     └── nlohmann/
