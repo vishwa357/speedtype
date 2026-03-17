@@ -14,6 +14,8 @@ int main() {
     SceneLoader  sceneLoader(world);
 
     sceneLoader.Load("scenes/lesson_01.json");
+    auto view = world.registry.view<Label>();
+    printf("Label count: %zu\n", view.size());
 
 #ifdef DEBUG
     HotReload hotReload("scenes/lesson_01.json", [&]() {
@@ -21,7 +23,7 @@ int main() {
     });
 #endif
 
-    TypingGame game(world);
+    TypingGame game(world, sceneLoader);
     game.Init();
 
     while (!WindowShouldClose()) {

@@ -1,6 +1,7 @@
 #pragma once
 #include "../../engine/World.hpp"
 #include "Lesson.hpp"
+#include "SceneLoader.hpp"
 #include "TypingEngine.hpp"
 #include <memory>
 #include <vector>
@@ -19,7 +20,7 @@ struct TypingLine {
 
 class TypingGame {
 public:
-    explicit TypingGame(World& world);
+    explicit TypingGame(World& world, SceneLoader& sceneLoader);
 
     void Init();
     void Update(float dt);
@@ -28,6 +29,7 @@ public:
 
 private:
     World&        world;
+    SceneLoader&  sceneLoader;
     GameState     state = GameState::MainMenu;
     int           currentLessonIndex = 0;
     int           currentLineIndex   = 0;
@@ -43,6 +45,7 @@ private:
     entt::entity  hudEntity      = entt::null;
 
     void LoadLessons(const std::string& path);
+    void OnSceneReload();
     void StartLine(int lessonIdx, int lineIdx);
     void HandleInput();
     void SyncEntitiesToEngine();  // pushes engine state into ECS labels

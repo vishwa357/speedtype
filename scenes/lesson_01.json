@@ -1,12 +1,28 @@
 {
-    "entities": [
-      {
-        "id": "cloud_01",
-        "components": {
-          "Transform": { "x": 100, "y": 200, "w": 150, "h": 80 },
-          "Sprite":    { "path": "assets/images/cloud.png" },
-          "Label":     { "text": "hello", "fontSize": 24, "color": [255,255,255,255] }
-        }
+  "entities": [
+    {
+      "id": "text_line",
+      "components": {
+        "Transform2D": { "x": 100, "y": 300, "w": 0, "h": 0 },
+        "Label": { "text": "", "fontSize": 32, "color": [180, 180, 180, 255] },
+        "Visible": { "value": false }
       }
-    ]
-  }
+    },
+    {
+      "id": "tip",
+      "components": {
+        "Transform2D": { "x": 100, "y": 340, "w": 0, "h": 0 },
+        "Label": { "text": "", "fontSize": 20, "color": [120, 120, 120, 255] },
+        "Visible": { "value": true }
+      }
+    },
+    {
+      "id": "hud",
+      "components": {
+        "Transform2D": { "x": 20, "y": 20, "w": 0, "h": 0 },
+        "Label": { "text": "0.0s", "fontSize": 20, "color": [180, 180, 180, 255] },
+        "Visible": { "value": true }
+      }
+    }
+  ]
+}

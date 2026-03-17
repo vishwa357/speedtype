@@ -1,6 +1,7 @@
 #include "TypingGame.hpp"
 #include "TypingEngine.hpp"
 #include "Lesson.hpp"
+#include "World.hpp"
 #include "raylib.h"
 #include "json.hpp"
 #include <fstream>
@@ -12,7 +13,7 @@ constexpr int FONT_SIZE = 32;
 const char* FONT_PATHS[] = {
     "assets/fonts/DejaVuSansMono.ttf",
     "assets/fonts/JetBrainsMono-Regular.ttf",
-    "assets/fonts/font.ttf",
+    "assets/fonts/LiberationMono-Regular.ttf",
 };
 
 constexpr float TEXT_LINE_X = 100.0f;
@@ -24,27 +25,17 @@ constexpr float HUD_Y = 20.0f;
 
 } // namespace
 
-TypingGame::TypingGame(World& world) : world(world) {}
+TypingGame::TypingGame(World& world, SceneLoader& sceneLoader) : world(world), sceneLoader(sceneLoader) {}
 
 void TypingGame::Init() {
     typingEngine = std::make_unique<TypingEngine>();
     LoadLessons("data/content/lessons.json");
 
-    textLineEntity = world.Create();
-    world.Add<Transform2D>(textLineEntity, Transform2D{ TEXT_LINE_X, TEXT_LINE_Y, 0.0f, 0.0f });
-    world.Add<Label>(textLineEntity, Label{ "", FONT_SIZE, WHITE });
-    world.Add<Visible>(textLineEntity, Visible{ false });  // drawn manually in Draw(), not by RenderSystem
+    textLineEntity = sceneLoader.Find("text_line");
+    tipEntity = sceneLoader.Find("tip");
+    hudEntity = sceneLoader.Find("hud");
 
-    tipEntity = world.Create();
-    world.Add<Transform2D>(tipEntity, Transform2D{ TIP_X, TIP_Y, 0.0f, 0.0f });
-    world.Add<Label>(tipEntity, Label{ "", 20.0f, { 120, 120, 120, 255 } });
-    world.Add<Visible>(tipEntity, Visible{ true });
-
-    hudEntity = world.Create();
-    world.Add<Transform2D>(hudEntity, Transform2D{ HUD_X, HUD_Y, 0.0f, 0.0f });
-    world.Add<Label>(hudEntity, Label{ "0.0s", 20.0f, { 180, 180, 180, 255 } });
-    world.Add<Visible>(hudEntity, Visible{ true });
-
+    printf("CWD check: %d\n", FileExists("assets/fonts/JetBrainsMono-Regular.ttf"));
     fontLoaded = false;
     for (const char* path : FONT_PATHS) {
         if (FileExists(path)) {
@@ -88,6 +79,13 @@ void TypingGame::LoadLessons(const std::string& path) {
     }
 }
 
+void TypingGame::OnSceneReload(){
+    textLineEntity = sceneLoader.Find("text_line");
+    tipEntity = sceneLoader.Find("tip");
+    hudEntity = sceneLoader.Find("hud");
+    SyncEntitiesToEngine();
+}
+
 void TypingGame::StartLine(int lessonIdx, int lineIdx) {
     if (lessons.empty() || lessonIdx < 0 || lineIdx < 0) return;
     if (static_cast<size_t>(lessonIdx) >= lessons.size()) return;
@@ -116,13 +114,16 @@ void TypingGame::SyncEntitiesToEngine() {
 }
 
 void TypingGame::Draw() {
+    printf("font.baseSize=%d fontLoaded=%d results=%d\n",
+        font.baseSize, (int)fontLoaded, (int)typingEngine->GetResults().size());
     if (state != GameState::Playing) return;
 
     const auto& results = typingEngine->GetResults();
     int cursorPos = typingEngine->GetCursorPos();
 
-    float originX = TEXT_LINE_X;
-    float originY = TEXT_LINE_Y;
+    auto& textLine = world.Get<Transform2D>(textLineEntity);
+    float originX = textLine.x;
+    float originY = textLine.y;
     const float scale = static_cast<float>(FONT_SIZE) / static_cast<float>(font.baseSize);
 
     Color colorUntyped = { 180, 180, 180, 255 };

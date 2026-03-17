@@ -26,8 +26,8 @@ entt::entity SceneLoader::Find(const std::string& id) {
 }
 
 void SceneLoader::ParseComponents(entt::entity e, const nlohmann::json& c) {
-if (c.contains("Transform")) {
-            auto& j = c["Transform"];
+if (c.contains("Transform2D")) {
+            auto& j = c["Transform2D"];
             world.Add<Transform2D>(e, Transform2D{
             j.value("x", 0.0f), j.value("y", 0.0f),
             j.value("w", 0.0f), j.value("h", 0.0f)
