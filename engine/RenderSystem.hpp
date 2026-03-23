@@ -1,6 +1,7 @@
 #pragma once
 #include "World.hpp"
 #include "raylib.h"
+#include <iostream>
 
 class RenderSystem {
 public:

@@ -1,4 +1,7 @@
 #include "RenderSystem.hpp"
+#include "World.hpp"
+#include <cstdio>
+#include <iostream>
 
 constexpr int FONT_SIZE = 32;
 constexpr float SPACING = 0.0f;
@@ -37,6 +40,8 @@ void RenderSystem::DrawSprites() {
 
         auto& t = view.get<Transform2D>(e);
         auto& s = view.get<Sprite>(e);
+        std::cout << "RenderSystem::DrawSprites::path: " << s.path << "\n";
+        printf("transform: x=%f, y=%f, w=%f, h=%f\n", t.x, t.y, t.w, t.h);
 
         if (!s.loaded) LoadSpriteTexture(s);
         if (s.loaded)

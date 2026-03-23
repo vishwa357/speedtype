@@ -1,28 +1,60 @@
 {
-  "entities": [
-    {
-      "id": "text_line",
-      "components": {
-        "Transform2D": { "x": 100, "y": 300, "w": 0, "h": 0 },
-        "Label": { "text": "", "fontSize": 32, "color": [180, 180, 180, 255] },
-        "Visible": { "value": false }
-      }
-    },
-    {
-      "id": "tip",
-      "components": {
-        "Transform2D": { "x": 100, "y": 340, "w": 0, "h": 0 },
-        "Label": { "text": "", "fontSize": 20, "color": [120, 120, 120, 255] },
-        "Visible": { "value": true }
-      }
-    },
-    {
-      "id": "hud",
-      "components": {
-        "Transform2D": { "x": 20, "y": 20, "w": 0, "h": 0 },
-        "Label": { "text": "0.0s", "fontSize": 20, "color": [180, 180, 180, 255] },
-        "Visible": { "value": true }
-      }
-    }
-  ]
+    "entities": [
+        {
+            "id": "text_line",
+            "components": {
+                "Transform2D": { "x": 100, "y": 300, "w": 0, "h": 0 },
+                "Label": {
+                    "text": "",
+                    "fontSize": 32,
+                    "color": [180, 180, 180, 255]
+                },
+                "Visible": { "value": false }
+            }
+        },
+        {
+            "id": "tip",
+            "components": {
+                "Transform2D": { "x": 100, "y": 340, "w": 0, "h": 0 },
+                "Label": {
+                    "text": "",
+                    "fontSize": 20,
+                    "color": [120, 120, 120, 255]
+                },
+                "Visible": { "value": true }
+            }
+        },
+        {
+            "id": "hud",
+            "components": {
+                "Transform2D": { "x": 20, "y": 20, "w": 0, "h": 0 },
+                "Label": {
+                    "text": "0.0s",
+                    "fontSize": 20,
+                    "color": [180, 180, 180, 255]
+                },
+                "Visible": { "value": true }
+            }
+        },
+        {
+            "id": "hand_left",
+            "components": {
+                "Transform2D": { "x": 480, "y": 520, "w": 342, "h": 400 },
+                "Sprite": {
+                    "path": "assets/images/hand_right.png"
+                },
+                "Visible": { "value": true }
+            }
+        },
+        {
+            "id": "keyboard_img",
+            "components": {
+                "Transform2D": { "x": 290, "y": 500, "w": 512, "h": 195 },
+                "Sprite": {
+                    "path": "assets/images/kb_black.png"
+                },
+                "Visible": { "value": true }
+            }
+        }
+    ]
 }

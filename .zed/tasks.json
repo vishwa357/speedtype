@@ -1,0 +1,16 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+//
+// Example:
+[
+    {
+        "type": "shell",
+        "label": "cmake-build-debug",
+        "command": "cmake -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build -j$(nproc) && ./build/typing_master",
+        "use_new_terminal": false,
+        "allow_concurrent_runs": false,
+        "group": {
+            "kind": "build",
+            "isDefault": true,
+        },
+    },
+]
