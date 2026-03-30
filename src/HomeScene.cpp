@@ -48,7 +48,7 @@ void HomeScene::LoadFont() {
 
 void HomeScene::GoToLesson() {
     SceneManager::Get().Push<LessonScene>(
-        "scenes/lesson_01.json",
+        "scenes/lesson_scene.json",
         "data/content/lessons.json"
     );
 }

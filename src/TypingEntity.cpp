@@ -92,3 +92,12 @@ void TypingEntity::StartLine(int lessonIdx, int lineIdx) {
     typingEngine->LoadLine(lesson.content[static_cast<size_t>(lineIdx)]);
     SyncLabels();
 }
+
+void TypingEntity::NextLesson() {
+    if (static_cast<size_t>(currentLessonIndex + 1) >= lessons.size()) return;
+
+    currentLessonIndex++;
+    currentLineIndex = 0;
+    lessonComplete = false;
+    StartLine(currentLessonIndex, currentLineIndex);
+}

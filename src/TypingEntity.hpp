@@ -11,7 +11,7 @@
 // TypingEntity — drives a typing lesson inside a LessonScene.
 //
 // It does NOT create ECS entities. The three layout entities (text_line, tip,
-// hud) are created by SceneLoader from scenes/lesson_01.json and their handles
+// hud) are created by SceneLoader from scenes/lesson_scene.json and their handles
 // are handed in via the constructor (and refreshed via ReloadHandles() after a
 // hot-reload wipes and re-populates the registry).
 //
@@ -80,6 +80,10 @@ public:
     int                            GetCursorPos()       const { return typingEngine->GetCursorPos(); }
     bool                           IsLessonComplete()   const { return lessonComplete; }
     entt::entity                   GetTextLineEntity()  const { return textLineEntity; }
+    int                            GetCurrentLessonIndex() const { return currentLessonIndex; }
+    float                          GetElapsedTime()     const { return typingEngine->GetElapsedTime(); }
+
+    void NextLesson();
 
 private:
     // -----------------------------------------------------------------------

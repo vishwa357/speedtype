@@ -51,6 +51,7 @@ void LessonScene::OnDraw() {
     }
 
     if (typingEntity->IsLessonComplete()) {
+        HandleCompleteInput();
         DrawCompleteBanner();
         return;
     }
@@ -178,15 +179,102 @@ float LessonScene::GlyphAdvance(int codepoint, float scale) const {
         : static_cast<float>(info.image.width) * scale;
 }
 
-void LessonScene::DrawCompleteBanner() const {
+void LessonScene::DrawCompleteBanner() {
     constexpr float FS      = 40.f;
     constexpr float SPACING = 1.f;
     const char*     msg     = "Lesson complete!";
     Vector2         sz      = MeasureTextEx(font, msg, FS, SPACING);
+    float bannerY = (static_cast<float>(GetScreenHeight()) - sz.y) * 0.5f - 50;
     DrawTextEx(font, msg,
-        { (static_cast<float>(GetScreenWidth())  - sz.x) * 0.5f,
-            (static_cast<float>(GetScreenHeight()) - sz.y) * 0.5f },
+        { (static_cast<float>(GetScreenWidth())  - sz.x) * 0.5f, bannerY },
         FS, SPACING, Color{ 100, 220, 100, 255 });
+
+    // Stats
+    const auto& results = typingEntity->GetResults();
+    int totalChars = results.size();
+    int correct = 0;
+    for (const auto& r : results) {
+        if (r.state == CharState::Correct) correct++;
+    }
+    float accuracy = totalChars > 0 ? (correct * 100.0f / totalChars) : 0.0f;
+    float time = typingEntity->GetElapsedTime();
+    float wpm = totalChars > 0 && time > 0 ? (totalChars / 5.0f) / (time / 60.0f) : 0.0f;
+
+    char statsBuf[256];
+    sprintf(statsBuf, "WPM: %.1f\nAccuracy: %.1f%%\nTime: %.1fs", wpm, accuracy, time);
+
+    Vector2 statsSize = MeasureTextEx(font, statsBuf, 30, 1);
+    Vector2 statsPos = { (static_cast<float>(GetScreenWidth()) - statsSize.x) * 0.5f,
+                         bannerY + sz.y + 10 };
+    DrawTextEx(font, statsBuf, statsPos, 30, 1, WHITE);
+
+    // Buttons
+    float screenW = GetScreenWidth();
+    float centerX = screenW / 2.0f;
+    float buttonY = statsPos.y + statsSize.y + 20;
+    float buttonWidth = 200;
+    float buttonHeight = 40;
+
+    int currentLesson = typingEntity->GetCurrentLessonIndex();
+    const char* nextText = (static_cast<size_t>(currentLesson + 1) < lessons.size()) ? "Next Lesson" : "All Done";
+
+    // Next/All Done button
+    Rectangle nextRect = {centerX - buttonWidth - 10, buttonY, buttonWidth, buttonHeight};
+    DrawRectangleRec(nextRect, BLUE);
+    DrawTextEx(font, nextText, {nextRect.x + 10, nextRect.y + 10}, 25, 1, WHITE);
+
+    // Home button
+    Rectangle homeRect = {centerX + 10, buttonY, buttonWidth, buttonHeight};
+    DrawRectangleRec(homeRect, GREEN);
+    DrawTextEx(font, "Home", {homeRect.x + 10, homeRect.y + 10}, 25, 1, WHITE);
+}
+
+void LessonScene::HandleCompleteInput() {
+    Vector2 mouse = GetMousePosition();
+
+    constexpr float FS = 40.f;
+    const char* msg = "Lesson complete!";
+    Vector2 sz = MeasureTextEx(font, msg, FS, 1);
+    float bannerY = (static_cast<float>(GetScreenHeight()) - sz.y) * 0.5f - 50;
+
+    // Stats
+    const auto& results = typingEntity->GetResults();
+    int totalChars = results.size();
+    int correct = 0;
+    for (const auto& r : results) {
+        if (r.state == CharState::Correct) correct++;
+    }
+    float accuracy = totalChars > 0 ? (correct * 100.0f / totalChars) : 0.0f;
+    float time = typingEntity->GetElapsedTime();
+    float wpm = totalChars > 0 && time > 0 ? (totalChars / 5.0f) / (time / 60.0f) : 0.0f;
+
+    char statsBuf[256];
+    sprintf(statsBuf, "WPM: %.1f\nAccuracy: %.1f%%\nTime: %.1fs", wpm, accuracy, time);
+
+    Vector2 statsSize = MeasureTextEx(font, statsBuf, 30, 1);
+    Vector2 statsPos = { (static_cast<float>(GetScreenWidth()) - statsSize.x) * 0.5f,
+                         bannerY + sz.y + 10 };
+
+    float buttonY = statsPos.y + statsSize.y + 20;
+    float buttonWidth = 200;
+    float buttonHeight = 40;
+    float centerX = static_cast<float>(GetScreenWidth()) / 2.0f;
+
+    Rectangle nextRect = {centerX - buttonWidth - 10, buttonY, buttonWidth, buttonHeight};
+    Rectangle homeRect = {centerX + 10, buttonY, buttonWidth, buttonHeight};
+
+    if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        if (CheckCollisionPointRec(mouse, nextRect)) {
+            int current = typingEntity->GetCurrentLessonIndex();
+            if (static_cast<size_t>(current + 1) < lessons.size()) {
+                typingEntity->NextLesson();
+            } else {
+                OnBack();
+            }
+        } else if (CheckCollisionPointRec(mouse, homeRect)) {
+            OnBack();
+        }
+    }
 }
 
 void LessonScene::OnBack() {

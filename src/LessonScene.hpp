@@ -23,7 +23,7 @@
 //   4. CreateEntity<TypingEntity>()  — entity receives the three entt handles
 //                                      that SceneLoader just produced; it owns
 //                                      the TypingEngine and registers for update
-//   5. HotReload watcher   — polls scenes/lesson_01.json; on change, re-runs
+//   5. HotReload watcher   — polls scenes/lesson_scene.json; on change, re-runs
 //                            sceneLoader.Load() and calls ReloadHandles() so
 //                            TypingEntity keeps writing to valid ECS entities
 //
@@ -87,6 +87,7 @@ private:
 
     float GlyphAdvance(int codepoint, float scale) const ;
 
-    void DrawCompleteBanner() const ;
+    void DrawCompleteBanner() ;
+    void HandleCompleteInput();
     void OnBack();
 };

@@ -1,6 +1,6 @@
 # README
 
-**Project: SpeedType (formerly Typing Master)**
+**Project: SpeedType**
 Linux now, Android next. C++17, Raylib, EnTT, nlohmann/json, CMake 3.28.
 
 ---
