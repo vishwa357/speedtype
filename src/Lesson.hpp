@@ -13,8 +13,3 @@ struct LessonData {
     std::string description;
     std::vector<LessonLine> content;
 };
-
-class Lesson {
-public:
-    explicit Lesson(const std::string& path);
-};
