@@ -8,7 +8,7 @@
             "name": "Debug Typing Master",
             "type": "lldb",
             "request": "launch",
-            "program": "${workspaceFolder}/build/typing_master",
+            "program": "${workspaceFolder}/build/speedtype",
             "args": [],
             "cwd": "${workspaceFolder}",
             "preLaunchTask": "cmake-build-debug"

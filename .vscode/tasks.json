@@ -4,7 +4,7 @@
 		{
 			"type": "shell",
 			"label": "cmake-build-debug",
-        	"command": "cmake -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build -j$(nproc) && ./build/typing_master",
+        	"command": "cmake -B build -DCMAKE_BUILD_TYPE=Debug && cmake --build build -j$(nproc)",
 			"problemMatcher": [],
 			"detail": "CMake Run",
 			"group": {
