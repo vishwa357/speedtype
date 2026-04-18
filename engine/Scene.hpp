@@ -60,6 +60,7 @@ public:
     }
 
     World&             GetWorld()  { return world; }
+    RenderSystem&      GetRenderSystem() { return renderSystem; }
     const std::string& GetName()   const { return name; }
 
 protected:
