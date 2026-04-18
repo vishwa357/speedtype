@@ -4,9 +4,20 @@
 #include "raylib.h"
 
 // Core components — extend as needed per game (Transform2D avoids raylib Transform)
+struct Anchor {
+    float x0 = 0.0f, x1 = 0.0f;  // x0: left edge, x1: right edge (0-1 normalized)
+    float y0 = 0.0f, y1 = 0.0f;  // y0: top edge, y1: bottom edge (0-1 normalized)
+};
+
+struct Pivot {
+    float x = 0.0f, y = 0.0f;  // 0-1 normalized position within the element
+};
+
 struct Transform2D {
     float x = 0, y = 0;
     float w = 0, h = 0;
+    Anchor anchor = {0.0f, 0.0f, 0.0f, 0.0f};
+    Pivot pivot = {0.0f, 0.0f};
 };
 
 struct Sprite {

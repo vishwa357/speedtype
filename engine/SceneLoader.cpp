@@ -26,11 +26,29 @@ entt::entity SceneLoader::Find(const std::string& id) {
 }
 
 void SceneLoader::ParseComponents(entt::entity e, const nlohmann::json& c) {
-if (c.contains("Transform2D")) {
-            auto& j = c["Transform2D"];
-            world.Add<Transform2D>(e, Transform2D{
+    if (c.contains("Transform2D")) {
+        auto& j = c["Transform2D"];
+
+        Anchor anchor{0.0f, 0.0f, 0.0f, 0.0f};
+        if (j.contains("anchor")) {
+            auto& aj = j["anchor"];
+            anchor.x0 = aj.value("x0", 0.0f);
+            anchor.x1 = aj.value("x1", 0.0f);
+            anchor.y0 = aj.value("y0", 0.0f);
+            anchor.y1 = aj.value("y1", 0.0f);
+        }
+
+        Pivot pivot{0.0f, 0.0f};
+        if (j.contains("pivot")) {
+            auto& pj = j["pivot"];
+            pivot.x = pj.value("x", 0.0f);
+            pivot.y = pj.value("y", 0.0f);
+        }
+
+        world.Add<Transform2D>(e, Transform2D{
             j.value("x", 0.0f), j.value("y", 0.0f),
-            j.value("w", 0.0f), j.value("h", 0.0f)
+            j.value("w", 0.0f), j.value("h", 0.0f),
+            anchor, pivot
         });
     }
     if (c.contains("Sprite")) {

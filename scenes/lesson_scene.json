@@ -3,7 +3,7 @@
         {
             "id": "text_line",
             "components": {
-                "Transform2D": { "x": 100, "y": 300, "w": 0, "h": 0 },
+                "Transform2D": { "x": 100, "y": 300, "w": 0, "h": 0, "anchor": { "x0": 0.0, "x1": 0.0, "y0": 0.0, "y1": 0.0 }, "pivot": { "x": 0.0, "y": 0.0 } },
                 "Label": {
                     "text": "",
                     "fontSize": 32,
@@ -15,7 +15,7 @@
         {
             "id": "tip",
             "components": {
-                "Transform2D": { "x": 100, "y": 340, "w": 0, "h": 0 },
+                "Transform2D": { "x": 100, "y": 340, "w": 0, "h": 0, "anchor": { "x0": 0.0, "x1": 0.0, "y0": 0.0, "y1": 0.0 }, "pivot": { "x": 0.0, "y": 0.0 } },
                 "Label": {
                     "text": "",
                     "fontSize": 20,
@@ -27,7 +27,7 @@
         {
             "id": "hud",
             "components": {
-                "Transform2D": { "x": 20, "y": 20, "w": 0, "h": 0 },
+                "Transform2D": { "x": 20, "y": 20, "w": 0, "h": 0, "anchor": { "x0": 0.0, "x1": 0.0, "y0": 0.0, "y1": 0.0 }, "pivot": { "x": 0.0, "y": 0.0 } },
                 "Label": {
                     "text": "0.0s",
                     "fontSize": 20,
@@ -39,7 +39,7 @@
         {
             "id": "hand_left",
             "components": {
-                "Transform2D": { "x": 480, "y": 520, "w": 342, "h": 400 },
+                "Transform2D": { "x": 480, "y": 520, "w": 342, "h": 400, "anchor": { "x0": 0.0, "x1": 0.0, "y0": 0.0, "y1": 0.0 }, "pivot": { "x": 0.0, "y": 0.0 } },
                 "Sprite": {
                     "path": "assets/images/hand_right.png"
                 },
@@ -49,7 +49,7 @@
         {
             "id": "keyboard_img",
             "components": {
-                "Transform2D": { "x": 290, "y": 500, "w": 512, "h": 195 },
+                "Transform2D": { "x": 290, "y": 500, "w": 512, "h": 195, "anchor": { "x0": 0.0, "x1": 0.0, "y0": 0.0, "y1": 0.0 }, "pivot": { "x": 0.0, "y": 0.0 } },
                 "Sprite": {
                     "path": "assets/images/kb_black.png"
                 },

@@ -13,6 +13,22 @@ const char* FONT_PATHS[] = {
     "assets/fonts/font.ttf",
 };
 
+Vector2 RenderSystem::ComputeTransformedPosition(const Transform2D& t) {
+    // Calculate anchor position on canvas (normalized to pixel coordinates)
+    float anchorX = refCanvasWidth * ((t.anchor.x0 + t.anchor.x1) * 0.5f);
+    float anchorY = refCanvasHeight * ((t.anchor.y0 + t.anchor.y1) * 0.5f);
+
+    // Calculate pivot offset (offset within the element based on size and pivot)
+    float pivotOffsetX = t.w * t.pivot.x;
+    float pivotOffsetY = t.h * t.pivot.y;
+
+    // Final position: anchor point - pivot offset + x,y offset
+    float finalX = anchorX - pivotOffsetX + t.x;
+    float finalY = anchorY - pivotOffsetY + t.y;
+
+    return { finalX, finalY };
+}
+
 void RenderSystem::Draw() {
     fontLoaded = false;
     for (const char* path : FONT_PATHS) {
@@ -44,8 +60,10 @@ void RenderSystem::DrawSprites() {
         printf("transform: x=%f, y=%f, w=%f, h=%f\n", t.x, t.y, t.w, t.h);
 
         if (!s.loaded) LoadSpriteTexture(s);
-        if (s.loaded)
-            DrawTextureEx(s.texture, { t.x, t.y }, 0.0f, 1.0f, WHITE);
+        if (s.loaded) {
+            Vector2 pos = ComputeTransformedPosition(t);
+            DrawTextureEx(s.texture, pos, 0.0f, 1.0f, WHITE);
+        }
     }
 }
 
@@ -58,9 +76,10 @@ void RenderSystem::DrawLabels() {
         auto& t = view.get<Transform2D>(e);
         auto& l = view.get<Label>(e);
 
+        Vector2 pos = ComputeTransformedPosition(t);
         DrawTextEx(font,
             l.text.c_str(),
-            {t.x, t.y},
+            pos,
             l.fontSize,
             SPACING,
             l.color);

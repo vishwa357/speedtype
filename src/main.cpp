@@ -3,6 +3,7 @@
 #include "HomeScene.hpp"
 
 int main() {
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     InitWindow(1280, 720, "SpeedType");
     SetTargetFPS(60);
     SetExitKey(KEY_NULL);
