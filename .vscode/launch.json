@@ -1,17 +1,34 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug Typing Master",
+            "name": "Debug Game",
             "type": "lldb",
             "request": "launch",
             "program": "${workspaceFolder}/build/speedtype",
             "args": [],
             "cwd": "${workspaceFolder}",
             "preLaunchTask": "cmake-build-debug"
+        },
+        {
+            "name": "Debug Editor",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/editor/scene_previewer",
+            "args": ["${input:sceneFile}"],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "cmake-build-debug"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "sceneFile",
+            "type": "pickString",
+            "description": "Scene to preview",
+            "options": [
+                "scenes/lesson_scene.json",
+                "scenes/home.json"
+            ]
         }
     ]
 }
