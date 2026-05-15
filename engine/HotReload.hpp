@@ -1,5 +1,4 @@
 #pragma once
-#ifdef DEBUG
 #include <filesystem>
 #include <functional>
 #include <string>
@@ -16,4 +15,3 @@ private:
     Callback    callback;
     std::filesystem::file_time_type lastWrite;
 };
-#endif

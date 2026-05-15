@@ -7,6 +7,7 @@ PreviewTool::PreviewTool(const std::string& sceneJsonPath)
     : sceneJsonPath(sceneJsonPath), currentPreset("Desktop"), shouldExit(false) {
     previewScene = std::make_unique<Scene>("Preview");
     LoadPresets();
+    std::cout << "creating preview" << std::endl;
 
     // Load the scene
     SceneLoader loader(previewScene->GetWorld());
@@ -135,6 +136,7 @@ void PreviewTool::Run() {
 
     while (!WindowShouldClose() && !shouldExit) {
         HandleInput();
+        if (hotReload) hotReload->Poll();
 
         previewScene->Update(GetFrameTime());
 

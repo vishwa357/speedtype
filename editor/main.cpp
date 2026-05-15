@@ -1,4 +1,5 @@
-#include "engine/PreviewTool.hpp"
+#include "PreviewTool.hpp"
+#include "raylib.h"
 #include <iostream>
 #include <string>
 
@@ -9,6 +10,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    SetTraceLogLevel(LOG_NONE);
     std::string sceneJsonPath = argv[1];
 
     try {

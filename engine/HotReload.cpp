@@ -1,4 +1,3 @@
-#ifdef DEBUG
 #include "HotReload.hpp"
 
 HotReload::HotReload(const std::string& path, Callback cb)
@@ -7,10 +6,9 @@ HotReload::HotReload(const std::string& path, Callback cb)
 }
 
 void HotReload::Poll() {
-    auto current = std::filesystem::last_write_time(path);
-    if (current != lastWrite) {
-        lastWrite = current;
-        callback();
-    }
+        auto current = std::filesystem::last_write_time(path);
+        if (current != lastWrite) {
+            lastWrite = current;
+            callback();
+        }
 }
-#endif

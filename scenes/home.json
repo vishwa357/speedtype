@@ -3,7 +3,22 @@
         {
             "id": "title",
             "components": {
-                "Transform2D": { "x": 400, "y": 260, "w": 0, "h": 0, "anchor": { "x0": 0.0, "x1": 0.0, "y0": 0.0, "y1": 0.0 }, "pivot": { "x": 0.0, "y": 0.0 } },
+                "Transform2D": {
+                    "x": 0,
+                    "y": 0,
+                    "w": 0,
+                    "h": 0,
+                    "anchor": {
+                        "x0": 0.5,
+                        "x1": 0.5,
+                        "y0": 0.5,
+                        "y1": 0.5
+                    },
+                    "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
                 "Label": {
                     "text": "SpeedType",
                     "fontSize": 64,
@@ -15,13 +30,35 @@
         {
             "id": "prompt",
             "components": {
-                "Transform2D": { "x": 460, "y": 360, "w": 0, "h": 0, "anchor": { "x0": 0.0, "x1": 0.0, "y0": 0.0, "y1": 0.0 }, "pivot": { "x": 0.0, "y": 0.0 } },
+                "Transform2D": {
+                    "x": 0,
+                    "y": 100,
+                    "w": 0,
+                    "h": 0,
+                    "anchor": {
+                        "x0": 0.5,
+                        "x1": 0.5,
+                        "y0": 0.5,
+                        "y1": 0.5
+                    },
+                    "pivot": {
+                        "x": 0.5,
+                        "y": 0.5
+                    }
+                },
                 "Label": {
                     "text": "Press Enter to start",
                     "fontSize": 24,
-                    "color": [140, 140, 140, 255]
+                    "color": [
+                        140,
+                        140,
+                        140,
+                        255
+                    ]
                 },
-                "Visible": { "value": true }
+                "Visible": {
+                    "value": true
+                }
             }
         }
     ]
