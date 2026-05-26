@@ -1,7 +1,9 @@
 #include "PreviewTool.hpp"
 #include "SceneLoader.hpp"
 #include "raylib.h"
+#include "imgui.h"
 #include <iostream>
+#include <filesystem>
 
 PreviewTool::PreviewTool(const std::string& sceneJsonPath)
     : sceneJsonPath(sceneJsonPath), currentPreset("Desktop"), shouldExit(false) {
@@ -51,6 +53,25 @@ void PreviewTool::OnSceneReload() {
     loader.Load(sceneJsonPath);
     previewScene->OnInit();
 }
+
+void PreviewTool::ScanScenes() {
+    availableScenes.clear();
+    if (std::filesystem::exists("scenes")) {
+        for (const auto& entry : std::filesystem::directory_iterator("scenes")) {
+            if (entry.path().extension() == ".json") {
+                availableScenes.push_back(entry.path().string());
+            }
+        }
+    }
+}
+
+void PreviewTool::LoadScene(const std::string& path) {
+    sceneJsonPath = path;
+    hotReload.reset();
+    OnSceneReload();
+    hotReload.emplace(sceneJsonPath, [this]() { OnSceneReload(); });
+}
+
 
 void PreviewTool::SwitchPreset(const std::string& presetName) {
     if (!presets.count(presetName)) {
@@ -104,27 +125,6 @@ void PreviewTool::HandleInput() {
 }
 
 void PreviewTool::DrawOverlay() const {
-    const int fontSize = 16;
-    const int lineHeight = fontSize + 4;
-    const int padding = 10;
-
-    // Draw semi-transparent background for text
-    DrawRectangle(0, 0, 400, 6 * lineHeight + 2 * padding, {0, 0, 0, 180});
-
-    // Draw text info
-    DrawTextEx(GetFontDefault(), "Preview Tool", {padding, padding}, fontSize, 1.0f, WHITE);
-
-    std::string fileText = "File: " + sceneJsonPath;
-    DrawTextEx(GetFontDefault(), fileText.c_str(), {padding, padding + lineHeight}, fontSize, 1.0f, LIGHTGRAY);
-
-    std::string presetText = "Preset: " + currentPreset;
-    DrawTextEx(GetFontDefault(), presetText.c_str(), {padding, padding + 2 * lineHeight}, fontSize, 1.0f, LIGHTGRAY);
-
-    std::string sizeText = "Size: " + std::to_string(GetScreenWidth()) + "x" + std::to_string(GetScreenHeight());
-    DrawTextEx(GetFontDefault(), sizeText.c_str(), {padding, padding + 3 * lineHeight}, fontSize, 1.0f, LIGHTGRAY);
-
-    const char* helpText = "P: Cycle Presets | R: Reload | ESC: Exit";
-    DrawTextEx(GetFontDefault(), helpText, {padding, padding + 5 * lineHeight}, fontSize, 1.0f, YELLOW);
 }
 
 void PreviewTool::Run() {
@@ -133,6 +133,26 @@ void PreviewTool::Run() {
     InitWindow(initialRes.width, initialRes.height, "SpeedType - Scene Preview");
     SetConfigFlags(FLAG_WINDOW_RESIZABLE);
     SetTargetFPS(60);
+
+    ui.Init();
+    ScanScenes();
+
+    auto topBar = std::make_unique<MainMenuBar>();
+    topBar->AddItem([this]() {
+        ImGui::Text("Scene:");
+        ImGui::SetNextItemWidth(200);
+        if (ImGui::BeginCombo("##SceneSelect", sceneJsonPath.c_str())) {
+            for (const auto& scene : availableScenes) {
+                bool is_selected = (sceneJsonPath == scene);
+                if (ImGui::Selectable(scene.c_str(), is_selected)) {
+                    LoadScene(scene);
+                }
+                if (is_selected) ImGui::SetItemDefaultFocus();
+            }
+            ImGui::EndCombo();
+        }
+    });
+    ui.AddComponent(std::move(topBar));
 
     while (!WindowShouldClose() && !shouldExit) {
         HandleInput();
@@ -143,9 +163,15 @@ void PreviewTool::Run() {
         BeginDrawing();
         ClearBackground({18, 18, 18, 255});
         previewScene->Draw();
+
+        ui.BeginDraw();
+        ui.DrawComponents();
+        ui.EndDraw();
+
         DrawOverlay();
         EndDrawing();
     }
 
+    ui.Shutdown();
     CloseWindow();
 }

@@ -2,10 +2,12 @@
 
 #include "Scene.hpp"
 #include "HotReload.hpp"
+#include "EditorUI.hpp"
 #include <map>
 #include <memory>
 #include <optional>
 #include <string>
+#include <vector>
 
 struct Resolution {
     int width;
@@ -26,10 +28,14 @@ private:
     std::string currentPreset;
     std::optional<HotReload> hotReload;
     bool shouldExit;
+    EditorUI ui;
+    std::vector<std::string> availableScenes;
 
     void LoadPresets();
     void OnSceneReload();
     void HandleInput();
     void SwitchPreset(const std::string& presetName);
     void DrawOverlay() const;
+    void ScanScenes();
+    void LoadScene(const std::string& path);
 };

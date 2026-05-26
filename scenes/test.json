@@ -1,0 +1,28 @@
+{
+    "entities": [
+        {
+            "id": "title",
+            "components": {
+                "Transform2D": { "x": 400, "y": 260, "w": 0, "h": 0, "anchor": { "x0": 0.0, "x1": 0.0, "y0": 0.0, "y1": 0.0 }, "pivot": { "x": 0.0, "y": 0.0 } },
+                "Label": {
+                    "text": "SpeedType",
+                    "fontSize": 64,
+                    "color": [255, 255, 255, 255]
+                },
+                "Visible": { "value": true }
+            }
+        },
+        {
+            "id": "prompt",
+            "components": {
+                "Transform2D": { "x": 460, "y": 360, "w": 0, "h": 0, "anchor": { "x0": 0.0, "x1": 0.0, "y0": 0.0, "y1": 0.0 }, "pivot": { "x": 0.0, "y": 0.0 } },
+                "Label": {
+                    "text": "Press Enter to start",
+                    "fontSize": 14,
+                    "color": [140, 140, 140, 255]
+                },
+                "Visible": { "value": true }
+            }
+        }
+    ]
+}
